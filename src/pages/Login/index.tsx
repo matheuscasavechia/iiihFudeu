@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Button, TouchableOpacity } from "react-native";
+import { Text, View, Button, TouchableOpacity, TextInput } from "react-native";
 import { Input } from "native-base";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -23,15 +23,26 @@ const Login = (props: Props) => {
         <Text style={{ fontSize: 30 }}>iiih FUDEU!!!</Text>
       </View>
 
-      {/* <View
+      <View
         style={{
           height: 150,
           justifyContent: "center",
           marginLeft: 16,
           marginRight: 16,
+          alignItems: "center",
         }}
       >
-        <Item floatingLabel style={{ borderColor: "#ffffff" }}>
+        <TextInput
+          placeholder="E-mail"
+          style={{
+            borderBottomColor: "#999999",
+            borderBottomWidth: 1,
+            height: 40,
+            width: "95%",
+            color: "#999999",
+          }}
+        />
+        {/* <Item floatingLabel style={{ borderColor: "#ffffff" }}>
           <Label style={{ color: "#ffffff" }}>Usuário</Label>
           <Input style={{ color: "#ffffff" }} />
         </Item>
@@ -43,8 +54,8 @@ const Login = (props: Props) => {
             secureTextEntry={true}
             style={{ color: "#ffffff" }}
           />
-        </Item>
-      </View> */}
+        </Item> */}
+      </View>
 
       <TouchableOpacity
         onPress={() => props.navigation.navigate("Home")}
@@ -121,16 +132,6 @@ const Login = (props: Props) => {
         />
       </View>
     </LinearGradient>
-    // <View style={{ marginTop: 25, alignContent: "center", flex: 1 }}>
-    //   <Text>Login</Text>
-    //   <TouchableOpacity
-    //     style={{ backgroundColor: "blue" }}
-    //     onPress={() => props.navigation.navigate("Home")}
-    //   >
-    //     <Text>HOME</Text>
-    //   </TouchableOpacity>
-    //   <Button title="Home" onPress={() => props.navigation.navigate("Home")} />
-    // </View>
   );
 };
 
