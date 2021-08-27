@@ -61,6 +61,7 @@ const TemplateLogin = ({
           placeholder="Senha"
           value={password}
           onChangeText={onChangePassword}
+          secureTextEntry={true}
           style={{
             borderBottomColor: "#999999",
             borderBottomWidth: 1,
