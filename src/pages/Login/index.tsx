@@ -9,13 +9,15 @@ const Login = (props: Props) => {
   const navigation = useNavigation<any>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const onPressEnter = () => {
-    console.log("email, password");
-    console.log(email, password);
-
     if (tryLogin(email, password)) navigation.navigate("Home");
     else console.log("usuario ou senha errada");
+  };
+
+  const onPressShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -25,6 +27,8 @@ const Login = (props: Props) => {
       onChangePassword={setPassword}
       email={email}
       password={password}
+      showPassword={showPassword}
+      onPressShowPassword={onPressShowPassword}
     />
   );
 };

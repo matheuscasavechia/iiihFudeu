@@ -1,6 +1,6 @@
 import React from "react";
-import { Text, View, Button, TouchableOpacity, TextInput } from "react-native";
-import { Input } from "native-base";
+import { Text, View, Pressable, TextInput } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
 type Props = {
@@ -10,14 +10,18 @@ type Props = {
   password: string;
   onChangeEmail: (text: string) => void;
   onChangePassword: (text: string) => void;
+  showPassword: boolean;
+  onPressShowPassword?: () => void;
 };
 
 const TemplateLogin = ({
   onPressEnter,
   onChangeEmail,
   onChangePassword,
+  onPressShowPassword,
   email,
   password,
+  showPassword,
 }: Props) => {
   return (
     <LinearGradient
@@ -47,33 +51,74 @@ const TemplateLogin = ({
       >
         <TextInput
           placeholder="E-mail"
+          placeholderTextColor="white"
           value={email}
           onChangeText={onChangeEmail}
           style={{
-            borderBottomColor: "#999999",
+            borderBottomColor: "white",
             borderBottomWidth: 1,
             height: 40,
             width: "95%",
-            color: "#999999",
+            color: "white",
           }}
         />
-        <TextInput
-          placeholder="Senha"
-          value={password}
-          onChangeText={onChangePassword}
-          secureTextEntry={true}
+        <View
           style={{
-            borderBottomColor: "#999999",
-            borderBottomWidth: 1,
-            height: 40,
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
             width: "95%",
-            color: "#999999",
-            marginTop: 25,
+            borderBottomColor: "white",
+            borderBottomWidth: 1,
+            alignSelf: "center",
           }}
-        />
+        >
+          <TextInput
+            placeholder="Senha"
+            placeholderTextColor="white"
+            value={password}
+            onChangeText={onChangePassword}
+            secureTextEntry={showPassword}
+            style={{
+              height: 40,
+              width: "95%",
+              color: "white",
+              marginTop: 25,
+            }}
+          />
+          {!showPassword ? (
+            <Pressable onPress={onPressShowPassword}>
+              <FontAwesome
+                name="eye"
+                size={24}
+                color="white"
+                style={{
+                  zIndex: 1,
+                  alignSelf: "center",
+                  marginTop: 25,
+                  right: 5,
+                }}
+              />
+            </Pressable>
+          ) : (
+            <Pressable onPress={onPressShowPassword}>
+              <FontAwesome
+                name="eye-slash"
+                size={24}
+                color="white"
+                style={{
+                  zIndex: 1,
+                  alignSelf: "center",
+                  marginTop: 25,
+                  right: 5,
+                }}
+              />
+            </Pressable>
+          )}
+        </View>
       </View>
 
-      <TouchableOpacity
+      <Pressable
         onPress={onPressEnter}
         style={{
           height: 50,
@@ -96,9 +141,9 @@ const TemplateLogin = ({
         >
           Bora Entrar!
         </Text>
-      </TouchableOpacity>
+      </Pressable>
 
-      <TouchableOpacity
+      <Pressable
         onPress={() => {}}
         style={{
           justifyContent: "center",
@@ -109,7 +154,7 @@ const TemplateLogin = ({
         <Text style={{ color: "#ffffff", textDecorationLine: "underline" }}>
           Faça seu cadastro já!
         </Text>
-      </TouchableOpacity>
+      </Pressable>
 
       <View
         style={{
